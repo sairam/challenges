@@ -1,5 +1,6 @@
 =begin
 
+# 7 / 10 test cases pass
 # https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd648244715d
 
 Given a paragraph of text, write a program to find the first shortest sub-segment that contains each of the given k words at least once. A segment is said to be shorter than other if it contains less number of words.
@@ -44,3 +45,26 @@ Total number of character in a paragraph will not be more than 200,000.
 
 =end
 
+orig_str = gets
+input_str = orig_str.scan(/[A-z]+/)
+size = gets.to_i
+query_str = size.times.map{gets}.map(&:strip).map(&:downcase).sort.uniq
+asize = query_str.size
+tsize = input_str.size
+begin
+  unless (input_str.map(&:downcase) & query_str).size == asize
+    raise "NO SUBSEGMENT FOUND"
+  end
+  (asize..tsize).each do |osize|
+    (tsize-osize+1).times do |i|
+      # puts "[#{osize}]"+input_str[i..(i+osize-1)].join(' ')
+      if (input_str[i..(i+osize-1)].map(&:downcase) & query_str).size == asize
+        # raise "works #{i} with #{osize} yay- #{input_str[i..(i+osize-1)]}"
+        raise input_str[i..(i+osize-1)].join(' ')
+      end
+
+    end
+  end
+rescue Exception => e
+  puts e
+end

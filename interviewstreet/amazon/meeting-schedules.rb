@@ -1,5 +1,5 @@
 =begin
-# Passes 9 out of 10 test cases
+# 9 / 10 test cases pass
 # https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd651016cd04
 
 Given M busy-time slots of N people, You need to print all the available time slots when all the N people can schedule a meeting for a duration of K minutes.
