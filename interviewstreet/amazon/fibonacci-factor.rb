@@ -8,7 +8,7 @@ FN = [2, 3, 5, 8, 13, 21, 34, 55, 89, 144, 233, 377, 610, 987, 1597, 2584, 4181,
 require 'prime'
 def fibfac(k)
 t = 0
-x = k.prime_division.flatten.uniq.sort[1..-1].keep_if{|x| k%x == 0}.detect do |k1|
+x = k.prime_division.transpose[0].detect do |k1|
   t = FN.detect{|x| x % k1 == 0}
   t > 0
 end
