@@ -1,5 +1,4 @@
 =begin
-# 9 / 10 test cases pass
 # https://amazon.interviewstreet.com/challenges/dashboard/#problem/4fd651016cd04
 
 Given M busy-time slots of N people, You need to print all the available time slots when all the N people can schedule a meeting for a duration of K minutes.
@@ -72,12 +71,12 @@ find_sequences(today).select{|x| x.count > slot-1}.each do |x|
   shr = (x[0])/60
   smm = (x[0])%60
   ehr = (x[-1]+1)/60
-  ehr = 0 if ehr == 24
-  emm = if ehr == 0
+  emm = if ehr == 24
     x[-1]
   else
     x[-1]+1
   end % 60
+  ehr = 0 if ehr == 24
   print "%02d" % shr
   print " %02d"% smm
   print " %02d"% ehr

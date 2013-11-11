@@ -50,11 +50,22 @@ input_str = orig_str.scan(/[A-z]+/)
 size = gets.to_i
 query_str = size.times.map{gets}.map(&:strip).map(&:downcase).sort.uniq
 asize = query_str.size
-tsize = input_str.size
 begin
   unless (input_str.map(&:downcase) & query_str).size == asize
     raise "NO SUBSEGMENT FOUND"
   end
+
+  xinput_str = input_str.map(&:downcase)
+  loffset = query_str.map do |q|
+    xinput_str.index(q)
+  end.sort[0]
+  roffset = query_str.map do |q|
+    xinput_str.rindex(q)
+  end.sort[-1]
+  # trimming down input size
+  input_str = input_str[loffset..roffset]
+  tsize = input_str.size
+
   (asize..tsize).each do |osize|
     (tsize-osize+1).times do |i|
       # puts "[#{osize}]"+input_str[i..(i+osize-1)].join(' ')
