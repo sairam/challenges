@@ -1,0 +1,69 @@
+# http://pastebin.com/raw.php?i=zupdZnkQ
+
+FIND THE MIN (45 points)
+
+After sending smileys, John decided to play with arrays.  Did you know that
+hackers enjoy playing with arrays?  John has a zero-based index array, M, which
+contains N non-negative integers.  However, only the first K values of the array
+are known to him, and he wants to figure out the rest.
+
+John knows the following: for each index i, where K <= i < N, M[i] is the
+minimum non-negative integer which is *not* contained in the previous *K* values
+of M.
+
+For example, if K = 3, N = 4 and the known values of M are [2, 3, 0], he can
+figure out that M[3] = 1.
+
+John is very busy making the world more open and connected, as such, he doesn't
+have time to figure out the rest of the array.  It is your task to help him.
+
+Given the first K values of M, calculate the nth value of this array. (i.e.
+M[N - 1]).
+
+Because the values of N and K can be very large, we use a pseudo-random number
+generator to calculate the first K values of M. Given positive integers A, B, C
+and R, the known values of m can be calculated as follows:
+
+M[0] = A
+M[i] = (B * M[i - 1] + C) % r, 0 < i < K
+
+
+INPUT
+
+The first line contains an integer T (T <= 20), the number of test cases. This
+is followed by T test cases, consisting of 2 lines each.
+
+The first line of each test case contains 2 space separated integers, n, k (1 <=
+k <= 10^5, k < n <= 10^9).
+
+The second line of each test case contains 4 space separated integers a, b, c, r
+(0 <= a, b, c <= 10^9, 1 <= r <= 10^9).
+
+
+OUTPUT
+
+For each test case, output a single line containing the case number and the Nth
+element of M.
+
+
+EXAMPLE INPUT
+
+    5
+    97 39
+    34 37 656 97
+    186 75
+    68 16 539 186
+    137 49
+    48 17 461 137
+    98 59
+    6 30 524 98
+    46 18
+    7 11 9 46
+
+EXAMPLE OUTPUT
+
+    Case #1: 8
+    Case #2: 38
+    Case #3: 41
+    Case #4: 40
+    Case #5: 12
